@@ -13,8 +13,8 @@
 
 | Voce | Valore |
 |---|---|
-| Tipo di prodotto | B2B Service: servizi IT, consulenza, sviluppo software, infrastruttura |
-| Pubblico | Titolari e responsabili IT di PMI e aziende italiane; decisori non sempre tecnici |
+| Tipo di prodotto | B2B Service: distributore esclusivo per l'Italia di software per i documenti aziendali (generazione, impaginazione automatica di cataloghi/listini, conversione flussi di stampa e PDF, sicurezza antifalsificazione, workflow e output management) + servizi di analisi, installazione, formazione, assistenza, outsourcing. Dal 1993, Forlì |
+| Pubblico | Responsabili IT, marketing e operations di aziende medio-grandi, private e pubbliche, e system integrator; decisori non sempre tecnici |
 | Obiettivo del sito | Autorevolezza + conversione (richiesta di contatto/preventivo) |
 | Personalità | Precisa, sobria, sicura di sé. Tech di fascia alta, non startup "giocosa" |
 | Modalità | **Light di default**; sezioni a contrasto su superficie `ink` (navy) per ritmo e enfasi |
@@ -28,17 +28,17 @@ consigliato per il prodotto "B2B Service") e una vetrina progetti ispirata a **P
 
 Ordine delle sezioni (home):
 
-1. **Header**: logo, navigazione (Servizi, Progetti, Metodo, Pacchetti, Azienda), CTA primaria "Parliamone".
-2. **Hero** (missione + credibilità): titolo di grande formato, sottotitolo, CTA primaria + secondaria, 2-3 numeri chiave.
-3. **Proof**: loghi clienti/partner e certificazioni. Se è un carosello: pausa al focus/hover, controlli prev/next, statico con reduced-motion.
-4. **Servizi** (Feature-Rich Showcase): **bento grid asimmetrica**, NON 3 icone uguali in fila. Ogni tile ha dimensione e contenuto diversi.
-5. **Progetti / case study**: griglia con filtro per categoria, card con risultato misurabile.
-6. **Metodo**: processo in passi numerati (timeline), non icone.
-7. **Pacchetti / pricing**: piani trasparenti o "a partire da", con CTA in ogni piano.
+1. **Header**: logo, navigazione (Soluzioni, Prodotti, Servizi, Case study, Azienda, Contatti), CTA primaria "Richiedi una demo".
+2. **Hero** (missione + credibilità): titolo di grande formato, sottotitolo, CTA primaria + secondaria, numeri chiave reali (dal 1993, 30+ anni, distributori esclusivi per l'Italia).
+3. **Proof**: loghi delle referenze autorizzate (Calligaris, Burgo, Luisa Spagnoli, Moroso, NaturaSì…). Se è un carosello: pausa al focus/hover, controlli prev/next, statico con reduced-motion.
+4. **Soluzioni** (Feature-Rich Showcase): le 5 aree di soluzione in **bento grid asimmetrica**, NON 3 icone uguali in fila. Ogni tile ha dimensione e contenuto diversi.
+5. **Case study** (vetrina progetti): griglia con filtro per area (Database publishing, Sicurezza documenti, PIM), card con risultato misurabile (es. "1.000 pagine in 30 minuti").
+6. **Metodo / Servizi**: Analisi → Try-and-Buy → Installazione → Formazione → Assistenza, come timeline numerata, non icone.
+7. **Formule** (sezione "pricing"): Try-and-Buy 30 giorni · Chiavi in mano · Noleggio operativo, con CTA in ogni formula. Nessun prezzo inventato: solo i prezzi che fornisce l'azienda.
 8. **CTA finale**: blocco a contrasto su superficie `ink`, form a basso attrito (pochi campi).
-9. **Footer**: contatti completi (ragione sociale, sede, P.IVA, email, telefono), mappa del sito, link legali.
+9. **Footer**: contatti completi (ragione sociale, sede, P.IVA, email commerciale e assistenza, telefono, orari), mappa del sito, LinkedIn/YouTube, link legali.
 
-Posizionamento CTA: **Contattaci / Richiedi preventivo** come primaria, ripetuta in nav, hero, dopo i pacchetti e nel blocco finale.
+Posizionamento CTA: **Richiedi una demo / Contattaci** come primaria, ripetuta in nav, hero, dopo le formule e nel blocco finale.
 
 ---
 
