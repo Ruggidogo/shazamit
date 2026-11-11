@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-canvas font-sans text-body text-fg antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  h1, h2, h3, h4 { @apply font-display; }
+  /* §10 Focus visibile sempre (solo da tastiera) */
+  :focus-visible {
+    outline: theme('outlineWidth.2') solid theme('colors.ring');
+    outline-offset: theme('outlineOffset.2');
+  }
+  .on-ink :focus-visible { outline-color: theme('colors.ring-on-ink'); }
+  /* Destinazioni di skip link e ancore: ricevono il focus ma non sono controlli */
+  [tabindex='-1']:focus { outline: none; }
+  /* L'attributo hidden vince sempre sulle classi di layout (pannelli Radix, menu mobile) */
+  [hidden] { display: none !important; }
+  [id] { scroll-margin-top: theme('spacing.header'); }
+  ::selection { @apply bg-accent text-on-accent; }
+}
+
+@layer components {
+  /* §6 Container: max 1280, gutter 16 / 32 / 48 */
+  .container-site { @apply mx-auto w-full max-w-container px-4 md:px-8 lg:px-12; }
+  /* §6 Padding verticale sezione 64 / 96 */
+  .section-y { @apply py-16 lg:py-24; }
+  .eyebrow { @apply text-eyebrow uppercase; }
+}
