@@ -23,10 +23,10 @@ export default function CaseStudyDetail() {
       <article>
         <header className="border-b bg-canvas pb-12 pt-16 lg:pb-16 lg:pt-24">
           <Reveal className="container-site">
-            <Link to={`/case-study#${c.area}`} className="inline-flex cursor-pointer items-center gap-2 font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline">
+            <Link to={`/case-study#${c.area}`} className="inline-flex cursor-pointer items-center gap-2 py-3 font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline">
               <ArrowLeft size={16} aria-hidden="true" /> {area.label}
             </Link>
-            <p className="eyebrow mt-8 text-accent">{label}</p>
+            <p className="eyebrow mt-6 text-accent">{label}</p>
             <h1 className="mt-4 max-w-prose text-h1 text-fg">{c.title}</h1>
             <p className="mt-6 max-w-prose text-lead text-secondary">{c.result}.</p>
           </Reveal>
@@ -70,7 +70,7 @@ export default function CaseStudyDetail() {
               )}
             </div>
 
-            <aside className="lg:col-span-4 lg:col-start-9">
+            <div className="lg:col-span-4 lg:col-start-9">
               <Reveal className="rounded-md border bg-canvas p-6 lg:sticky lg:top-32 lg:p-8">
                 <dl className="flex flex-col gap-4">
                   <div>
@@ -89,7 +89,7 @@ export default function CaseStudyDetail() {
                   Richiedi una demo
                 </ButtonLink>
               </Reveal>
-            </aside>
+            </div>
           </div>
         </div>
       </article>

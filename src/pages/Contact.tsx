@@ -95,21 +95,21 @@ export default function Contact() {
             <h2 className="text-h3 text-fg">Recapiti</h2>
             <ul className="mt-6 flex flex-col border-t">
               <ContactRow icon={<MapPin size={20} aria-hidden="true" />} label="Sede legale">
-                <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer" className="cursor-pointer text-fg underline-offset-4 hover:underline">
+                <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex cursor-pointer py-3 text-fg underline-offset-4 hover:underline">
                   {company.address}, {company.city}
                 </a>
               </ContactRow>
               <ContactRow icon={<Phone size={20} aria-hidden="true" />} label="Centralino">
-                <a href={company.phoneHref} className="cursor-pointer text-fg underline-offset-4 hover:underline">{company.phone}</a>
+                <a href={company.phoneHref} className="inline-flex cursor-pointer py-3 text-fg underline-offset-4 hover:underline">{company.phone}</a>
               </ContactRow>
               <ContactRow icon={<Clock size={20} aria-hidden="true" />} label="Orario d’ufficio">
-                <span className="text-fg">{company.hours}</span>
+                <span className="block py-3 text-fg">{company.hours}</span>
               </ContactRow>
               <ContactRow icon={<Mail size={20} aria-hidden="true" />} label="Commerciale">
-                <a href={`mailto:${company.emailSales}`} className="cursor-pointer text-fg underline-offset-4 hover:underline">{company.emailSales}</a>
+                <a href={`mailto:${company.emailSales}`} className="inline-flex cursor-pointer py-3 text-fg underline-offset-4 hover:underline">{company.emailSales}</a>
               </ContactRow>
               <ContactRow icon={<Mail size={20} aria-hidden="true" />} label="Assistenza">
-                <a href={`mailto:${company.emailSupport}`} className="cursor-pointer text-fg underline-offset-4 hover:underline">{company.emailSupport}</a>
+                <a href={`mailto:${company.emailSupport}`} className="inline-flex cursor-pointer py-3 text-fg underline-offset-4 hover:underline">{company.emailSupport}</a>
               </ContactRow>
             </ul>
           </Reveal>
@@ -184,10 +184,10 @@ export default function Contact() {
 
 function ContactRow({ icon, label, children }: { icon: React.ReactNode; label: string; children: React.ReactNode }) {
   return (
-    <li className="flex gap-4 border-b py-4">
-      <span className="mt-1 text-accent">{icon}</span>
+    <li className="flex gap-4 border-b py-2">
+      <span className="mt-3 text-accent">{icon}</span>
       <span>
-        <span className="block text-caption text-fg-muted">{label}</span>
+        <span className="block pt-2 text-caption text-fg-muted">{label}</span>
         {children}
       </span>
     </li>

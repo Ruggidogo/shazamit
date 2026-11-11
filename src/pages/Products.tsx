@@ -15,11 +15,11 @@ export default function Products() {
         title="Software di cui siamo distributori unici per l’Italia."
         intro="Soluzioni modulari e configurabili, disponibili con demo online o in sede, Try-and-Buy di 30 giorni, chiavi in mano o a noleggio operativo."
       >
-        <nav aria-label="Aree di prodotto" className="mt-8">
-          <ul className="flex flex-col gap-2 md:flex-row md:flex-wrap md:gap-x-6">
+        <nav aria-label="Aree di prodotto" className="mt-6">
+          <ul className="flex flex-col md:flex-row md:flex-wrap md:gap-x-6">
             {areas.map((a) => (
               <li key={a.id}>
-                <Link to={`#${a.id}`} className="cursor-pointer font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline">
+                <Link to={`#${a.id}`} className="inline-flex cursor-pointer py-3 font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline">
                   {a.short}
                 </Link>
               </li>

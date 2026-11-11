@@ -50,7 +50,7 @@ export function Hero() {
           </RevealItem>
         </div>
 
-        <RevealItem className="mt-16 flex flex-col gap-4 border-t pt-6 md:flex-row md:items-center md:justify-between">
+        <RevealItem className="mt-16 flex flex-col gap-2 border-t pt-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-2">
             <a
               href={company.linkedin}
@@ -75,7 +75,7 @@ export function Hero() {
             href={company.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex cursor-pointer items-center gap-2 text-caption text-fg-muted underline-offset-4 transition-colors hover:text-fg hover:underline"
+            className="inline-flex cursor-pointer items-center gap-2 py-3 text-caption text-fg-muted underline-offset-4 transition-colors hover:text-fg hover:underline"
           >
             <MapPin size={16} aria-hidden="true" />
             {company.address}, Forlì

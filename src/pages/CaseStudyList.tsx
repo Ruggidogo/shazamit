@@ -15,11 +15,11 @@ export default function CaseStudyList() {
         title="Progetti reali, risultati misurabili."
         intro="Come aziende in Italia e in Europa hanno automatizzato e protetto i propri documenti con le soluzioni che distribuiamo."
       >
-        <nav aria-label="Aree dei case study" className="mt-8">
-          <ul className="flex flex-col gap-2 md:flex-row md:gap-6">
+        <nav aria-label="Aree dei case study" className="mt-6">
+          <ul className="flex flex-col md:flex-row md:gap-6">
             {caseAreas.map((a) => (
               <li key={a.id}>
-                <Link to={`#${a.id}`} className="cursor-pointer font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline">
+                <Link to={`#${a.id}`} className="inline-flex cursor-pointer py-3 font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline">
                   {a.label}
                 </Link>
               </li>

@@ -27,7 +27,7 @@ const groups = [
   },
 ];
 
-const linkCls = 'cursor-pointer text-fg-muted underline-offset-4 transition-colors hover:text-fg hover:underline';
+const linkCls = 'inline-flex cursor-pointer py-3 text-fg-muted underline-offset-4 transition-colors hover:text-fg hover:underline';
 
 export function Footer() {
   return (
@@ -51,7 +51,7 @@ export function Footer() {
         {groups.map((g) => (
           <RevealItem as="div" key={g.label} className="lg:col-span-2">
             <h2 className="eyebrow text-fg">{g.label}</h2>
-            <ul className="mt-4 flex flex-col gap-3">
+            <ul className="mt-2 flex flex-col">
               {g.links.map((l) => (
                 <li key={l.title}>
                   <Link to={l.to} className={linkCls}>
@@ -65,7 +65,7 @@ export function Footer() {
 
         <RevealItem className="lg:col-span-4">
           <h2 className="eyebrow text-fg">Contatti</h2>
-          <ul className="mt-4 flex flex-col gap-3">
+          <ul className="mt-2 flex flex-col">
             <li>
               <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer" className={`${linkCls} inline-flex items-start gap-2`}>
                 <MapPin size={20} aria-hidden="true" className="shrink-0" />
@@ -95,7 +95,7 @@ export function Footer() {
       </RevealGroup>
 
       <div className="border-t">
-        <div className="container-site flex flex-col gap-4 py-6 text-caption text-fg-muted lg:flex-row lg:items-center lg:justify-between">
+        <div className="container-site flex flex-col gap-2 py-4 text-caption text-fg-muted lg:flex-row lg:items-center lg:justify-between">
           <p>
             © {new Date().getFullYear()} {company.legalName} · P.IVA e C.F. {company.vat} · Capitale sociale {company.capital} · {company.register} · {company.rea}
           </p>

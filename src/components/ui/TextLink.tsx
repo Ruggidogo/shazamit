@@ -9,7 +9,7 @@ export function TextLink({ to, children, onInk = false, className }: { to: strin
     <Link
       to={to}
       className={cn(
-        'group inline-flex cursor-pointer items-center gap-2 font-medium underline-offset-4 transition-colors hover:underline focus-visible:underline',
+        'group inline-flex cursor-pointer items-center gap-2 py-3 font-medium underline-offset-4 transition-colors hover:underline focus-visible:underline',
         onInk ? 'text-accent-on-ink hover:text-accent-on-ink-hover' : 'text-accent hover:text-accent-hover',
         className,
       )}
