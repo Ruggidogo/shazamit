@@ -1,94 +1,128 @@
-import { areas, products, type AreaId } from '@/data/site';
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useInView, useReducedMotion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
+import { solutions, type Solution } from '@/data/solutions';
 import { cn } from '@/lib/cn';
+import { DURATION, EASE, EXIT } from '@/lib/motion';
 import { SectionHeading } from '../ui/SectionHeading';
-import { RevealGroup, RevealItem } from '../ui/Reveal';
 import { TextLink } from '../ui/TextLink';
+import { AnimatedGridPattern } from '../ui/AnimatedGridPattern';
+import { SolutionIllustration } from '../illustrations/SolutionIllustration';
 
-/** Feature-Rich Showcase in bento grid asimmetrica (§2.4): tile di dimensioni e contenuti diversi, nessuna icona ripetuta. */
-const layout: Record<AreaId, string> = {
-  sicurezza: 'md:col-span-2 lg:col-span-7 lg:row-span-2',
-  publishing: 'lg:col-span-5',
-  'dati-variabili': 'lg:col-span-5',
-  conversione: 'lg:col-span-5',
-  workflow: 'lg:col-span-4',
-};
-
-const productsOf = (id: AreaId) => products.filter((p) => p.area === id).map((p) => p.name);
-
-export function Solutions() {
-  const [security, ...rest] = areas;
+/**
+ * Adattato da 21st.dev — manuarora700/sticky-scroll-reveal.
+ * Differenze: scroll della pagina (non un contenitore interno), pannello ink con griglia animata
+ * al posto degli sfondi sfumati, voci inattive con colore attenuato dai token invece dell'opacità,
+ * su mobile ogni soluzione mostra la propria illustrazione.
+ */
+export function Solutions({ withHeading = true }: { withHeading?: boolean }) {
+  const [active, setActive] = useState(0);
   return (
     <section id="soluzioni" aria-labelledby="soluzioni-title" className="section-y border-t bg-canvas">
       <div className="container-site">
-        <SectionHeading
-          id="soluzioni-title"
-          eyebrow="Soluzioni"
-          title="Ogni documento, dal dato alla stampa."
-          intro="Selezioniamo i migliori software internazionali, li sottoponiamo a stress test e li portiamo in Italia in esclusiva. Poi li adattiamo ai vostri processi."
-        />
+        {!withHeading && (
+          <h2 id="soluzioni-title" className="sr-only">
+            Le soluzioni
+          </h2>
+        )}
+        {withHeading && (
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <SectionHeading
+              id="soluzioni-title"
+              eyebrow="Soluzioni"
+              title="Ogni documento, dal dato alla stampa."
+              intro="Selezioniamo i migliori software internazionali, li sottoponiamo a stress test e li portiamo in Italia in esclusiva. Poi li adattiamo ai vostri processi."
+            />
+            <TextLink to="/soluzioni">Tutte le soluzioni</TextLink>
+          </div>
+        )}
 
-        <RevealGroup className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:mt-16 lg:grid-cols-12">
-          {/* Tile principale: sicurezza, su superficie ink */}
-          <RevealItem as="article" className={cn('on-ink flex flex-col justify-between gap-12 rounded-md bg-ink p-6 lg:p-12', layout.sicurezza)}>
-            <div>
-              <p className="eyebrow text-accent-on-ink">01 · {security.short}</p>
-              <h3 className="mt-4 text-h3 text-on-ink">{security.title}</h3>
-              <p className="mt-4 max-w-prose text-body-lg text-on-ink-subtle">{security.description}</p>
+        <div className={cn('grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8', withHeading && 'mt-12 lg:mt-16')}>
+          <ol className="lg:col-span-5">
+            {solutions.map((s, i) => (
+              <SolutionItem key={s.slug} solution={s} index={i} active={active === i} onActive={() => setActive(i)} />
+            ))}
+          </ol>
+          <div className="hidden lg:col-span-6 lg:col-start-7 lg:block">
+            <div className="sticky top-32">
+              <SolutionPanel solution={solutions[active]} />
             </div>
-            <div>
-              <p className="text-caption text-on-ink-muted">{productsOf(security.id).join(' · ')}</p>
-              <ul className="mt-4 grid grid-cols-1 border-t border-border-on-ink md:grid-cols-2">
-                {['MicroPrint e TROYMark', 'Sfondi anti-copia e pantografi', 'Verifica da smartphone', 'Tracciabilità di ogni stampa'].map((f) => (
-                  <li key={f} className="border-b border-border-on-ink py-3 text-on-ink">
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 flex flex-col md:flex-row md:gap-8">
-                <TextLink to={`/prodotti#${security.id}`} onInk>
-                  Vedi i prodotti
-                </TextLink>
-                <TextLink to="/case-study#sicurezza" onInk>
-                  6 case study
-                </TextLink>
-              </div>
-            </div>
-          </RevealItem>
-
-          {rest.map((area, i) => (
-            <RevealItem as="article" key={area.id} className={cn('flex flex-col justify-between gap-8 rounded-md border bg-surface p-6 lg:p-8', layout[area.id])}>
-              <div>
-                <p className="eyebrow text-accent">
-                  {String(i + 2).padStart(2, '0')} · {area.short}
-                </p>
-                <h3 className="mt-4 text-h4 text-fg">{area.title}</h3>
-                <p className="mt-4 text-fg-muted">{area.description}</p>
-                {area.id === 'publishing' && (
-                  <p className="mt-6 border-l border-accent pl-4 text-secondary">
-                    <span className="font-display text-h4 text-fg">30 minuti</span> per un catalogo di 1.000 pagine e 30.000 articoli.
-                  </p>
-                )}
-              </div>
-              <div className="border-t pt-4">
-                <p className="text-caption text-fg-muted">{productsOf(area.id).join(' · ')}</p>
-                <TextLink to={`/prodotti#${area.id}`}>
-                  Vedi i prodotti
-                </TextLink>
-              </div>
-            </RevealItem>
-          ))}
-
-          {/* Tile PIM: diversa per contenuto e fondo */}
-          <RevealItem as="article" className="flex flex-col justify-between gap-8 rounded-md bg-muted p-6 md:col-span-2 lg:col-span-3 lg:p-8">
-            <div>
-              <p className="eyebrow text-accent">06 · PIM</p>
-              <h3 className="mt-4 text-h4 text-fg">Un’unica fonte per tutti i dati di prodotto</h3>
-              <p className="mt-4 text-secondary">PimCore collegato dal vivo alla pubblicazione automatica: sito, cataloghi e marketplace sempre allineati.</p>
-            </div>
-            <TextLink to="/case-study#pim">Vadigran e Van Iperen</TextLink>
-          </RevealItem>
-        </RevealGroup>
+          </div>
+        </div>
       </div>
     </section>
+  );
+}
+
+function SolutionItem({ solution, index, active, onActive }: { solution: Solution; index: number; active: boolean; onActive: () => void }) {
+  const ref = useRef<HTMLLIElement>(null);
+  // Attiva la voce quando attraversa la fascia centrale dello schermo
+  const inCenter = useInView(ref, { margin: '-45% 0px -45% 0px' });
+  useEffect(() => {
+    if (inCenter) onActive();
+  }, [inCenter, onActive]);
+
+  return (
+    <li ref={ref} className={cn('border-l py-8 pl-6 transition-colors lg:py-24', active ? 'border-accent' : 'border-border')}>
+      <div className="mb-6 lg:hidden">
+        <SolutionPanel solution={solution} />
+      </div>
+      <p className={cn('eyebrow transition-colors', active ? 'text-accent' : 'text-fg-muted')}>
+        {solution.number} · {solution.short}
+      </p>
+      <h3 className="mt-4 text-h3">
+        <Link
+          to={`/soluzioni/${solution.slug}`}
+          className={cn('cursor-pointer underline-offset-4 transition-colors hover:text-accent hover:underline', active ? 'text-fg' : 'text-fg-muted')}
+          onFocus={onActive}
+        >
+          {solution.title}
+        </Link>
+      </h3>
+      <p className="mt-4 text-fg-muted">{solution.tagline}</p>
+      <TextLink to={`/soluzioni/${solution.slug}`} className="mt-2">
+        Scopri la soluzione
+      </TextLink>
+      <span className="sr-only">{index + 1} di {solutions.length}</span>
+    </li>
+  );
+}
+
+export function SolutionPanel({ solution, linked = true }: { solution: Solution; linked?: boolean }) {
+  const reduce = useReducedMotion();
+  return (
+    <div className="on-ink relative aspect-square w-full overflow-hidden rounded-md border border-border-on-ink bg-ink">
+      <AnimatedGridPattern accent />
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={solution.slug}
+          className="absolute inset-0 flex flex-col"
+          initial={reduce ? false : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0, transition: { duration: DURATION, ease: EASE } }}
+          exit={reduce ? undefined : { opacity: 0, transition: { duration: EXIT } }}
+        >
+          <div className="flex-1 p-6 lg:p-12">
+            <SolutionIllustration slug={solution.slug} />
+          </div>
+          <div className="relative flex items-center justify-between gap-4 border-t border-border-on-ink bg-ink px-6 py-4">
+            <p className="eyebrow text-on-ink-subtle">
+              {solution.number} · {solution.short}
+            </p>
+            {linked && (
+              <Link
+                to={`/soluzioni/${solution.slug}`}
+                className="inline-flex cursor-pointer items-center gap-2 py-3 font-medium text-accent-on-ink underline-offset-4 transition-colors hover:text-accent-on-ink-hover hover:underline"
+                tabIndex={-1}
+                aria-hidden="true"
+              >
+                Apri
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
+            )}
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 }

@@ -8,6 +8,8 @@ import CaseStudyList from '@/pages/CaseStudyList';
 import CaseStudyDetail from '@/pages/CaseStudyDetail';
 import Company from '@/pages/Company';
 import Contact from '@/pages/Contact';
+import SolutionsIndex from '@/pages/SolutionsIndex';
+import SolutionDetail from '@/pages/SolutionDetail';
 import NotFound from '@/pages/NotFound';
 
 /** Porta in cima a ogni cambio pagina; con un #hash scorre alla sezione e le sposta il focus. */
@@ -42,6 +44,8 @@ export default function App() {
       <main id="contenuto" tabIndex={-1} className="relative z-10 bg-canvas">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/soluzioni" element={<SolutionsIndex />} />
+          <Route path="/soluzioni/:slug" element={<SolutionDetail />} />
           <Route path="/prodotti" element={<Products />} />
           <Route path="/case-study" element={<CaseStudyList />} />
           <Route path="/case-study/:slug" element={<CaseStudyDetail />} />

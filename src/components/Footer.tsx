@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Linkedin, Mail, MapPin, Phone, Youtube } from 'lucide-react';
-import { areas, company } from '@/data/site';
+import { company } from '@/data/site';
+import { solutions } from '@/data/solutions';
 import { Logo } from './ui/Logo';
 import { RevealGroup, RevealItem } from './ui/Reveal';
 
@@ -13,7 +14,7 @@ import { RevealGroup, RevealItem } from './ui/Reveal';
 const groups = [
   {
     label: 'Soluzioni',
-    links: areas.map((a) => ({ title: a.short, to: `/prodotti#${a.id}` })),
+    links: solutions.map((s) => ({ title: s.short, to: `/soluzioni/${s.slug}` })),
   },
   {
     label: 'Azienda',

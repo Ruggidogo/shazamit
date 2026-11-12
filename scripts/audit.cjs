@@ -3,7 +3,7 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const axeSrc = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
 const BASE = process.argv[2] || 'http://localhost:5173';
-const routes = ['/', '/prodotti', '/case-study', '/case-study/aswo', '/case-study/vadigran', '/azienda', '/contatti', '/pagina-inesistente'];
+const routes = ['/', '/soluzioni', '/soluzioni/sicurezza-documenti', '/soluzioni/database-publishing', '/soluzioni/workflow-output-management', '/soluzioni/pim-dam', '/prodotti', '/case-study', '/case-study/aswo', '/case-study/vadigran', '/azienda', '/contatti', '/pagina-inesistente'];
 const widths = [320, 375, 768, 1024, 1440];
 const report = { overflow: [], axe: [], targets: [], focus: [], links: [] };
 

@@ -29,9 +29,11 @@ consigliato per il prodotto "B2B Service") e una vetrina progetti ispirata a **P
 Ordine delle sezioni (home):
 
 1. **Header**: logo, navigazione (Soluzioni, Prodotti, Servizi, Case study, Azienda, Contatti), CTA primaria "Richiedi una demo".
-2. **Hero** (missione + credibilità): titolo di grande formato, sottotitolo, CTA primaria + secondaria, numeri chiave reali (dal 1993, 30+ anni, distributori esclusivi per l'Italia).
+2. **Hero** su superficie `ink` con **Animated Grid Pattern** (§10.2): titolo di grande formato, sottotitolo, CTA primaria + secondaria, illustrazione animata, numeri chiave reali (dal 1993, 30+ anni, distributori esclusivi per l'Italia).
 3. **Proof**: loghi delle referenze autorizzate (Calligaris, Burgo, Luisa Spagnoli, Moroso, NaturaSì…). Se è un carosello: pausa al focus/hover, controlli prev/next, statico con reduced-motion.
-4. **Soluzioni** (Feature-Rich Showcase): le 5 aree di soluzione in **bento grid asimmetrica**, NON 3 icone uguali in fila. Ogni tile ha dimensione e contenuto diversi.
+4. **Soluzioni** (Feature-Rich Showcase, v2): **Sticky Scroll Reveal**. Le 6 soluzioni scorrono a sinistra; a destra un pannello `ink` fisso mostra l'illustrazione animata della soluzione attiva (§10.3). Ogni soluzione porta alla sua pagina dedicata `/soluzioni/:slug`.
+
+Pagina soluzione (`/soluzioni/:slug`): testata `ink` con griglia animata e illustrazione → perché serve (con confronto "senza / con" dove il sito attuale lo fornisce) → come funziona (diagramma di flusso animato) → cosa permette di fare → prodotti → case study → CTA → soluzione successiva.
 5. **Case study** (vetrina progetti): griglia con filtro per area (Database publishing, Sicurezza documenti, PIM), card con risultato misurabile (es. "1.000 pagine in 30 minuti").
 6. **Metodo / Servizi**: Analisi → Try-and-Buy → Installazione → Formazione → Assistenza, come timeline numerata, non icone.
 7. **Formule** (sezione "pricing"): Try-and-Buy 30 giorni · Chiavi in mano · Noleggio operativo, con CTA in ogni formula. Nessun prezzo inventato: solo i prezzi che fornisce l'azienda.
@@ -223,6 +225,29 @@ Mobile-first. Nessuno scroll orizzontale; il testo deve fare reflow fino al 200%
 | Reduced motion | `prefers-reduced-motion: reduce` → nessuno spostamento (`y: 0`), stato finale visibile subito, niente smooth-scroll né caroselli automatici |
 
 Non si usano easing con rimbalzo (`back.out`), parallax o scroll-jacking.
+
+### 10.2 Sfondo: Animated Grid Pattern (v2)
+
+| Token | Valore |
+|---|---|
+| Cella della griglia | 48px (spacing `12`) |
+| Linee su `ink` | 1px `ink-hover` |
+| Quadrati su `ink` | `border-on-ink`; 1 su 6 in `accent` **solo** nei pannelli illustrazione (nessun testo sovrapposto) |
+| Testo sopra la griglia | solo `on-ink` / `on-ink-subtle` (≥ 7:1 anche sopra un quadrato `border-on-ink`) |
+| Linee su chiaro | 1px `border` |
+| Quadrati su chiaro | `muted` |
+| Ciclo quadrati | fade 0 → 1 → 0 in 4s + 4s (ease-in-out), poi cambiano posizione |
+| Densità | 24 quadrati per sezione |
+| Reduced motion | griglia e quadrati fermi |
+
+Solo colori pieni dei token: nessuna maschera sfumata, nessuna trasparenza permanente (l'opacità varia solo durante il fade).
+
+### 10.3 Illustrazioni animate e motion ambientale (v2)
+
+- SVG in linea, solo colori dei token (`fill-*`, `stroke-*`), testo con la scala tipografica.
+- Ciclo ambientale: **4s**, ease-in-out, ripetuto; parte solo quando l'illustrazione è visibile.
+- Cambio di illustrazione nel pannello: entrata 0.7s con l'easing di §10.1, uscita 200ms.
+- Reduced motion: si mostra il fotogramma finale, nessun ciclo.
 
 ---
 

@@ -28,7 +28,7 @@ export const company = {
 };
 
 export const nav = [
-  { label: 'Soluzioni', to: '/#soluzioni' },
+  { label: 'Soluzioni', to: '/soluzioni' },
   { label: 'Prodotti', to: '/prodotti' },
   { label: 'Servizi', to: '/#servizi' },
   { label: 'Case study', to: '/case-study' },

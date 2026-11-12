@@ -1,4 +1,6 @@
 import { areas, products, productSlug } from '@/data/site';
+import { solutionByArea } from '@/data/solutions';
+import { TextLink } from '@/components/ui/TextLink';
 import { PageHeader } from '@/components/PageHeader';
 import { ButtonLink } from '@/components/ui/Button';
 import { RevealGroup, RevealItem, Reveal } from '@/components/ui/Reveal';
@@ -35,6 +37,7 @@ export default function Products() {
               <p className="eyebrow text-accent">{String(i + 1).padStart(2, '0')}</p>
               <h2 id={`${a.id}-title`} className="mt-4 text-h3 text-fg">{a.title}</h2>
               <p className="mt-4 text-fg-muted">{a.description}</p>
+              <TextLink to={`/soluzioni/${solutionByArea(a.id).slug}`} className="mt-2">Scopri la soluzione</TextLink>
             </Reveal>
             <RevealGroup as="ul" className="border-t lg:col-span-7 lg:col-start-6">
               {products.filter((p) => p.area === a.id).map((p) => (
